@@ -17,9 +17,13 @@ phases:
   post_build:
     commands:
       - echo Build completed on date
+      - echo Syncing to S3 bucket...
       - aws s3 sync . s3://s3-codep  --delete
 
 artifacts:
   files:
-    - '*/'
+    - index.html
+    - appspec.yml
+    - buildspec.yml
+    - scripts/** 
   name: ca-i-$(date +%Y-%m-%d)
