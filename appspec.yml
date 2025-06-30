@@ -1,24 +1,23 @@
 version: 0.0
+os: linux
 
-phases:
-  install:
-    commands:
-      - echo Nothing to install for pure HTML
-  pre_build:
-    commands:
-      - echo Logging in to Amazon ECR...
-      - echo Build started on date
-  build:
-    commands:
-      - echo Build phase started on date
-      - echo Compiling the static files
-      # Jika ada proses build khusus, tambahkan di sini
-      - echo Build completed on date
-  post_build:
-    commands:
-      - echo Build completed on date
+files:
+  - source: /
+    destination: /var/www/html  # Ubah sesuai lokasi HTML di server kamu
+    overwrite: yes
 
-artifacts:
-  files:
-    - '*/'
-  name: ca-i-$(date +%Y-%m-%d)
+hooks:
+  BeforeInstall:
+    - location: scripts/install_dependencies.sh
+      timeout: 300
+      runas: root
+
+  AfterInstall:
+    - location: scripts/start_server.sh
+      timeout: 300
+      runas: root
+
+  ApplicationStart:
+    - location: scripts/stop_application.sh
+      timeout: 300
+      runas: root
