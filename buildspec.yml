@@ -12,7 +12,7 @@ phases:
     commands:
       - echo Build phase started on date
       - echo Compiling the static files
-      # Jika ada proses build khusus, tambahkan di sini
+      # Jika ada proses build khusus, tambahkan di sini.
       - echo Build completed on date
   post_build:
     commands:
