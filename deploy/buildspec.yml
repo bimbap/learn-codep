@@ -21,4 +21,4 @@ phases:
 artifacts:
   files:
     - '*/'
-  name: static-website-$(date +%Y-%m-%d)
+  name: ca-i-$(date +%Y-%m-%d)
