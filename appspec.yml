@@ -2,8 +2,8 @@ version: 0.0
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 18
+    commands:
+      - echo Nothing to install for pure HTML
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
